@@ -1,7 +1,8 @@
 <html>
 
 <head>
-	<title>Space Music - ОКГ Project</title>
+	<link rel="icon" href="/favicon.png">
+	<title>Space Music - Computer Graphics Basics Project </title>
 	<meta charset="utf-8">
 	<style>
 		body {
@@ -21,28 +22,99 @@
 
 	<div id="startScreen">
 		<div>
+
+			<button class="standartButton " id="infoButton"> i </button>
 			<img src="images/space-music-logo.png" alt="Space Music Logo">
-			<p>Добре дошли в Space Music!
-				<br>Вие имате привилегията да присъствате на концертa на невероятната космическа група!
-				Членовете на групата са специално оборудвани за изпълнения в космоса.
-				Някои от частите на тялото им са подсилени,
-				за да могат да се справят с голямото натоварване
-				в космическото пространство.
-				<br><b>КАК РАБОТИ?</b>
-				<br>Натиснете върху някоя от сцените с музиканти и съответния музикант ще започне да свири. Когато и
-				тримата
-				музиканти свирят, ще се включат и танцьорите!*
-				<br><i><small>*ако свиренето на музикантите не е в синхрон, опитайте да презаредите
-						страницата</small></i>
+			<h1>This is Space Music!</h1>
+			<p>
+				We are delighted to welcome you to the one-of-a-kind concert of the newest music group!
+				<br> As you will see the band's members are specially equipped for their performance in cosmic space.
+				Some of them even underwent special operations, in order to strengthen their bodies and make them able
+				to resist the enormous pressure in intergalactic space.
 			</p>
-			<button id="startButton">ЗАПОЧНИ СЕГА!</button>
-			<br><i><small>Space Music - проект по ОКГ, зимен семестър 2019/2020</small></i>
-			<br><i><small>Тони Тончев Костов - спец. Компютърни науки - Втори поток - 6 група - ф.н. 81663</small></i>
+			<h3>How does it work?</h3>
+			<p>
+				Just click on any of the band's members and they will start to play. When all three of them are playing,
+				the dancers will join in!
+			</p>
+			<button class="standartButton" id="startButton">LET'S GO!</button>
+
+			<br><i><small>If the sounds are not synchronised try refreshing the page.</small></i>
 		</div>
+	</div>
+
+	<div class="modal" id="infoModal">
+		<div id="infoModalContent">
+			<span id="close">&times;</span>
+			<p>
+				<center>
+					<h1>Space Music</h1>
+					<h3>Course Project</h3>
+					<br> Computer Graphics Basics &bull; Winter Semester 2019/2020 &bull; Student: Toni Kostov &bull;
+					Faculty Number: 81663 &bull; Computer Science, Group 6
+				</center>
+			</p>
+
+			<p>
+			<h3>Used Software:</h3>
+			<ul>
+				<li>Adobe Photoshop</li>
+				<li>Adobe Illustrator</li>
+				<li>Atom</li>
+				<li>FL Studio</li>
+				<li>GIMP</li>
+				<li>QuickPHP Web Server</li>
+				<li>Visual Studio Code</li>
+			</ul>
+			</p>
+
+			<p>
+			<h3>Project Description:</h3>
+			<p>The project was created with HTML, CSS and Javascript (THREE.JS). </p>
+			<p>The library <i>human.js</i>, provided by the course tutor, was used in the project.
+				However, a few changes were made to the file in order to enable it to run on a newer version of
+				<i>THREE.JS</i>.
+				These include changing the functions' names and adding a third argument to the ones which create the
+				parametric surfaces.
+				The third argument represents the end result of the function.
+			</p>
+			<p>The file <i>instruments.js</i> is used to create the musical instruments.
+				The piano was created through extrusion; the drums are entirely created from basic objects (cubes,
+				cones, etc.);
+				the guitar is loaded from a <i>.svg</i> file. <small>[1]</small></p>
+			<p>All elements are added to the scene in the main file <i>space-music.html</i> (humans, instruments,
+				lights, sound, new joints, clothes, background).
+				The new joints are being loaded from <i>.svg</i> files and extruded.
+				The clothes are created through parametric surfaces and basic objects.
+				The lights are turned on by clicking on a stage/human (<i>threex.domevents.js</i> is used for this
+				purpose).
+				All animations (dance movements, levitating etc.) were calculated and created manually.</p>
+			<p>All textures, as well as the music, were created for the purpose of the project with the above-noted
+				software.</p>
+			<p>
+				<small>
+					<i>[1] Source: <a href="https://svgsilh.com/im-age/303510.html" target="_blank"
+							rel="noopener noreferrer">https://svgsilh.com/im-age/303510.html</a>
+						<br> Used fonts:
+						<a href="https://www.dafontfree.io/coolkids-script-font/" target="_blank"
+							rel="noopener noreferrer">Coolkids Script Font</a>,
+						<a href="https://fonts.google.com/specimen/Mulish" target="_blank"
+							rel="noopener noreferrer">Mulish</a>
+						<br> More information about the project (in bulgarian) <a href="info.pdf"
+							target="_blank">here</a>
+					</i>
+
+				</small>
+
+			</p>
+
+			</p>
+		</div>
+
 	</div>
 	<style>
 		#startScreen {
-			position: absolute;
+			position: fixed;
 			z-index: 1;
 			top: 0;
 			left: 0;
@@ -56,34 +128,25 @@
 			color: #ffffff;
 			font-family: 'Mulish', sans-serif;
 			font-weight: 200;
-		}
-
-		#startScreen>div {
 			text-align: center;
-
 		}
 
 		#startScreen>div>img {
 			width: 85px;
 			height: 85px;
+
 		}
 
 		#startScreen>div>p {
-			width: 600px;
+			max-width: 500px;
+			width: fit-content;
 			margin: 20px;
 			font-size: 17px;
-			text-align: center;
 		}
 
-		#startButton {
-			height: 40px;
-			width: 200px;
-			background-color: black;
+		.standartButton {
+			background-color: transparent;
 			color: white;
-			outline: 2px solid white;
-			border: 0px;
-			border-radius: 5px;
-			font-size: 17px;
 			font-family: 'Mulish', sans-serif;
 			font-weight: bold;
 			text-decoration: none;
@@ -91,12 +154,82 @@
 			cursor: pointer;
 			transition-duration: 0.5s;
 			margin: 20px;
-			
 		}
 
-		#startButton:hover {
+		.standartButton:focus {
+			background-color: rgb(4, 7, 67);
+			color: white;
+		}
+
+		.standartButton:hover {
 			background-color: white;
 			color: black;
+		}
+
+
+
+
+		#startButton {
+			height: 40px;
+			width: 200px;
+			outline: 2px solid white;
+			border: 0px;
+			border-radius: 5px;
+			font-size: 17px;
+		}
+
+		#infoButton {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			height: 25px;
+			width: 25px;
+			outline: 2px solid white;
+			border: 0px;
+			border-radius: 12px;
+			font-size: 15px;
+		}
+
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+
+
+		#infoModalContent {
+			background-color: rgba(255, 255, 255, 0.95);
+			margin: 10% auto;
+			padding: 30px;
+			border: 3px solid rgb(4, 7, 67);
+			border-radius: 5px;
+			width: 80%;
+			font-family: 'Mulish', sans-serif;
+			font-weight: 500;
+			text-align: justify;
+			color: rgb(0, 0, 0);
+		}
+
+		#close {
+			color: rgb(0, 0, 0);
+			float: right;
+			font-family: 'Mulish', sans-serif;
+			font-size: 28px;
+			font-weight: bold;
+			text-decoration: none;
+			transition-duration: 0.5s;
+		}
+
+		#close:hover {
+			cursor: pointer;
+			color: rgb(4, 7, 67);
 		}
 	</style>
 	<script src="three.js"></script>
@@ -105,6 +238,18 @@
 	<script src="SVGLoader.js"></script>
 	<script src="instruments.js"></script>
 	<script src="threex.domevents.js"></script>
+	<script id="showingAndClosingInfoModal">
+
+		var imodal = document.getElementById('infoModal');
+
+		var infoBtn = document.getElementById('infoButton');
+		infoBtn.addEventListener('click', function () { imodal.style.display = 'block'; });
+
+		var closeBtn = document.getElementById('close');
+		closeBtn.addEventListener('click', function () { imodal.style.display = "none"; });
+
+	</script>
+
 	<script id="mainScript">
 
 		var startButton = document.getElementById('startButton');
@@ -137,10 +282,10 @@
 			var light = new THREE.AmbientLight(0x404040, 3);
 			scene.add(light);
 
-			//добавяме отделните звуци
-			//за да постигнем едновременно свирене на всички инструменти заедно ги пускаме
-			//всички заедно, но някои от тях са с намален Volume. Когато се активира съответен звук,
-			//тогава се вдига и volume-а на съответния звук
+
+			//adding sounds
+			//in order for all of them to play in sync, they are all started at the same time with volume 0
+			//the volume is increased when clicking the human figures
 			var listener = new THREE.AudioListener();
 			camera.add(listener);
 
@@ -180,7 +325,7 @@
 				guitarSound.play();
 			});
 
-			//ще направим звезди, все едно сме в космоса
+			//star background
 			var starGeometry = new THREE.Geometry;
 			starGeometry.verticesNeedUpdate = true;
 			for (var i = 0; i < 6000; i++) {
@@ -192,8 +337,7 @@
 			var stars = new THREE.Points(starGeometry, starMaterial);
 			scene.add(stars);
 
-			//започваме да правим сцените, на които ще са човечетата.
-			//сцени - в смисъл на геометрични обекти, върху които човечетата стоят/седят
+			//stages for the human figures
 			var textureForStage = new THREE.TextureLoader().load('textures/stage-texture2.png');
 			var mainStageGeometry = new THREE.CylinderGeometry(90, 5, 20, 64, 32, false, 0);
 			var mainStageMaterial = new THREE.MeshPhongMaterial({ map: textureForStage, shininess: 90, wireframe: true });
@@ -215,7 +359,7 @@
 			scene.add(secondaryStageThree);
 			secondaryStageThree.position.set(155, -10, -45);
 
-			//надпис "space music", зарежда се от шрифт
+			//sign "space music", loaded form a font
 			var spaceMusicSign = new THREE.Object3D();
 			var signFontLoader = new THREE.FontLoader();
 			signFontLoader.load('fonts/Coolkids - Script Typeface_Regular.json', function (signFont) {
@@ -228,7 +372,7 @@
 			});
 			scene.add(spaceMusicSign);
 
-			//светлина за сцената с пианистката
+			//light for the pianist's stage
 			var pianistSpotLight = new THREE.SpotLight(0x9E5A96, 1.5);
 			pianistSpotLight.position.set(-155, 65, -45);
 			scene.add(pianistSpotLight);
@@ -236,7 +380,7 @@
 			pianistSpotLight.target = secondaryStageOne;
 			pianistSpotLight.visible = false;
 
-			//светлина за сцената с барабаниста
+			//light for the drumer's stage
 			var drumerSpotLight = new THREE.SpotLight(0x15ff00, 1.5);
 			drumerSpotLight.position.set(0, 65, -155);
 			scene.add(drumerSpotLight);
@@ -244,7 +388,7 @@
 			drumerSpotLight.target = secondaryStageTwo;
 			drumerSpotLight.visible = false;
 
-			//светлина за сцената с китариста
+			//light for the guitarist's stage
 			var guitaristSpotLight = new THREE.SpotLight(0xff0000, 1.5);
 			guitaristSpotLight.position.set(155, 65, -45);
 			scene.add(guitaristSpotLight);
@@ -252,7 +396,7 @@
 			guitaristSpotLight.target = secondaryStageThree;
 			guitaristSpotLight.visible = false;
 
-			//светлина за главната сцена
+			//light for the main stage
 			var dancersSpotLight = new THREE.SpotLight({ color: 0xbbc4dd, intensity: 1.3, angle: pi / 6, penumbra: 0.5 });
 			dancersSpotLight.position.set(0, 100, 0);
 			scene.add(dancersSpotLight);
@@ -260,52 +404,52 @@
 			dancersSpotLight.target = mainStage;
 			dancersSpotLight.visible = false;
 
-			//светлина за надписа Space Music
-			//всъщност ще бъдат три идентични светлини, които ще се въртят в кръг около надписа
+			//light for the Space Music sign
+			//three identical lights, which levitate around the sign
 			var signPointLights = [];
-			signPointLights.push(new THREE.PointLight(0xff0040, 2.5, 75)); //червена
-			signPointLights.push(new THREE.PointLight(0x0040ff, 2.5, 75)); //синя
-			signPointLights.push(new THREE.PointLight(0x80ff80, 2.5, 75)); //зелена
+			signPointLights.push(new THREE.PointLight(0xff0040, 2.5, 75)); //red
+			signPointLights.push(new THREE.PointLight(0x0040ff, 2.5, 75)); //blue
+			signPointLights.push(new THREE.PointLight(0x80ff80, 2.5, 75)); //green
 
-			var sphere = new THREE.SphereGeometry(0.5, 16, 8); //за да ги виждаме къде са
+			var sphere = new THREE.SphereGeometry(0.5, 16, 8); //so we can see them
 			signPointLights[0].add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0040 })));
 			signPointLights[1].add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x0040ff })));
 			signPointLights[2].add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x80ff80 })));
 
 			scene.add(signPointLights[0], signPointLights[1], signPointLights[2]);
 
-			//добавяме музикалните инструменти
-			//пиано
+			//adding musical instruments
+			//piano
 			var piano = CreatePiano();
 			scene.add(piano);
 			piano.position.set(-180, 24, -65);
 			piano.rotation.y = pi / 6;
 			piano.scale.set(0.5, 0.5, 0.5);
 
-			//барабани
+			//drums
 			var drums = CreateDrums();
 			scene.add(drums);
 			drums.position.set(0, 12, -120);
 			drums.scale.set(0.8, 0.8, 0.8);
 
-			//китара
+			//guitar
 			var guitar = CreateGuitar();
 			guitar.rotation.y = pi / 2;
 			guitar.rotation.z = pi / 2;
 			guitar.scale.set(0.4, 0.4, 0.4);
 
-			//столче за пианистката
+			//stool for pianist
 			var stoolForPiano = CreateStool();
 			scene.add(stoolForPiano);
 			stoolForPiano.position.set(-145, 7, -48);
 
-			//столче за барабаниста
+			//stool for drumer
 			var stoolForDrums = CreateStool();
 			scene.add(stoolForDrums);
 			stoolForDrums.position.set(0, 7, -150);
 
-			//добавяме човечетата заедно с първоначалните им статични позиции
-			//пианистка
+			//adding the human figures with their initial positions
+			//pianist (female)
 			var pianist = female();
 			pianist.l_leg.turn(0, -20, -80);
 			pianist.r_leg.turn(0, 20, -80);
@@ -318,7 +462,7 @@
 			pianist.rotation.y = 7 * pi / 6;
 			pianist.position.set(-145, 22, -48);
 
-			//барабанист
+			//drumer (male)
 			var drumer = male();
 			scene.add(drumer);
 			var drumStickRight = CreateDrumStick();
@@ -334,7 +478,7 @@
 			drumer.rotation.y = -pi / 2;
 			drumer.position.set(0, 22, -150);
 
-			//китарист
+			//guitarist (male)
 			var guitarist = male();
 			scene.add(guitarist);
 			guitarist.rotation.y = -3 * pi / 4;
@@ -346,7 +490,7 @@
 			AddObjectToPerson(guitarist.l_wrist, guitar);
 			guitarist.position.set(155, 30, -45);
 
-			//двама танцьори
+			//two dancers (one male, one female)
 			var maleDancer = male();
 			var femaleDancer = female();
 			maleDancer.position.set(55, 32, 0);
@@ -355,7 +499,7 @@
 			femaleDancer.rotation.y = -pi / 2;
 			scene.add(maleDancer, femaleDancer);
 
-			//начално положение на двамата танцьори
+			//initial position of the dancers
 			maleDancer.l_leg.turn(10, 0, 0);
 			maleDancer.r_leg.turn(-10, 0, 0);
 			maleDancer.l_arm.turn(20, 0, -70);
@@ -371,10 +515,10 @@
 			femaleDancer.r_elbow.turn(100, 0, 0);
 			femaleDancer.body.turn(15, 0, 0);
 
-			//ще създадем разкопчана ризка за танцьора
+			//unbuttoned shirt for the male dancer
 			var shirtScale = 1.3;
 			function shirtMesh(u, v, result) {
-				u = 0.3 + 1.7 * pi * u; //за разкопчана ризка намали да не е 2pi ;)
+				u = 0.3 + 1.7 * pi * u;
 				v = 5 * pi * v;
 				var x = Math.cos(u) * (v / 2);
 				var y = Math.sin(u) * (v / 2);
@@ -392,7 +536,7 @@
 			shirt.rotation.x = pi / 2;
 			AddObjectToPerson(maleDancer.body, shirt);
 
-			//пелерина за китариста
+			//cape for guitarist
 			var mantelScale = 3;
 			function mantelMesh(u, v, result) {
 				u = 0.4 + 1.6 * pi * u;
@@ -413,7 +557,7 @@
 			mantel.rotation.x = pi / 2;
 			AddObjectToPerson(guitarist.body, mantel);
 
-			//рокля за танцьорката
+			//dress for the female dancer
 			var dressScale = 4;
 			function dressMesh(u, v, result) {
 				u = 2 * pi * u;
@@ -434,17 +578,15 @@
 			dress.rotation.x = pi / 2;
 			AddObjectToPerson(femaleDancer.body, dress);
 
-			//ще добавим скафандри на всички човечета
-			//за целта създаваме масив от цветове, за да може всеки скафандър да е различен,
-			//а геометрията е една и съща за всички
-			var colorsForHelmet = [];
+			//adding space suits to all of the figures
+			var colorsForHelmet = []; //creating an array of colours, so thah every space suit has a different colour
 			var helmets = [];
-			var helmetGeometry = new THREE.SphereGeometry(7, 32, 32);
-			colorsForHelmet.push(new THREE.Color(0x3e0abf)); //пианистка
-			colorsForHelmet.push(new THREE.Color(0x3cff00)); //барабанист
-			colorsForHelmet.push(new THREE.Color(0xff4500)); //китарист
-			colorsForHelmet.push(new THREE.Color(0x009999)); //танцьор
-			colorsForHelmet.push(new THREE.Color(0xA23E48)); //танцьорка
+			var helmetGeometry = new THREE.SphereGeometry(7, 32, 32); //all space suits have the same geometry
+			colorsForHelmet.push(new THREE.Color(0x3e0abf)); //pianist
+			colorsForHelmet.push(new THREE.Color(0x3cff00)); //drumer
+			colorsForHelmet.push(new THREE.Color(0xff4500)); //guitarist
+			colorsForHelmet.push(new THREE.Color(0x009999)); //male dancer
+			colorsForHelmet.push(new THREE.Color(0xA23E48)); //female dancer
 			for (var i = 0; i < 5; i++) {
 				var helmetMaterial = new THREE.MeshPhongMaterial({ transparent: true, opacity: 0.55, color: colorsForHelmet[i] });
 				helmets.push(new THREE.Mesh(helmetGeometry, helmetMaterial));
@@ -456,12 +598,12 @@
 			AddObjectToPerson(maleDancer.neck, helmets[3]);
 			AddObjectToPerson(femaleDancer.neck, helmets[4]);
 
-			//ще добавим папийонки за момчетата
+			//adding bowties to the male figures
 			var colorsForBowTies = [];
 			var bowTies = [];
-			colorsForBowTies.push(new THREE.Color(0x275428)); //барабанист
-			colorsForBowTies.push(new THREE.Color(0xffa500)); //китарист
-			colorsForBowTies.push(new THREE.Color(0x4ca3dd)); //танцьор
+			colorsForBowTies.push(new THREE.Color(0x275428)); //drumer
+			colorsForBowTies.push(new THREE.Color(0xffa500)); //guitarist
+			colorsForBowTies.push(new THREE.Color(0x4ca3dd)); //male dancer
 			var bowTieProfile = [];
 			var bowTieScale = 0.6;
 			for (var j = 0; j < 1; j += 0.01) {
@@ -480,10 +622,10 @@
 			AddObjectToPerson(guitarist.neck, bowTies[1]);
 			AddObjectToPerson(maleDancer.neck, bowTies[2]);
 
-			//за момичетата цветя, които са всъщност две папийонки под формата на х
+			//adding flowers (two rotatet bowties) to the female figures 
 			var colorsForFlowers = [];
-			colorsForFlowers.push(new THREE.Color(0x3e0abf)); //пианистка
-			colorsForFlowers.push(new THREE.Color(0xffd500)); //танцьорка
+			colorsForFlowers.push(new THREE.Color(0x3e0abf)); //pianist
+			colorsForFlowers.push(new THREE.Color(0xffd500)); //female dancer
 			var flowers = [];
 			var flowerProfile = [];
 			var flowerScale = 0.3;
@@ -506,7 +648,7 @@
 			AddObjectToPerson(pianist.neck, flowers[0]);
 			AddObjectToPerson(femaleDancer.neck, flowers[1]);
 
-			//ще направим няколко тениски с един и същи профил, но различни текстури
+			//adding tshirts with same geometry, but different textures
 			var tShirtScale = 1.3;
 			function tShirtMesh(u, v, result) {
 				u = 2 * pi * u;
@@ -537,11 +679,11 @@
 			femaleDancerTShirt.rotation.x = pi / 2;
 			AddObjectToPerson(femaleDancer.body, femaleDancerTShirt);
 
-			//шапки за някои от човечетата
+			//hats for some of the figures
 			var colorsForHats = [];
-			colorsForHats.push(new THREE.Color(0x9082bf)); //пианистка
-			colorsForHats.push(new THREE.Color(0xffd500)); //барабанист
-			colorsForHats.push(new THREE.Color(0xfff275)); //танцьор
+			colorsForHats.push(new THREE.Color(0x9082bf)); //pianist
+			colorsForHats.push(new THREE.Color(0xffd500)); //drumer
+			colorsForHats.push(new THREE.Color(0xfff275)); //male dancer
 			var hats = [];
 			var hatScale = 2;
 			function hatMesh(u, v, result) {
@@ -564,30 +706,30 @@
 			AddObjectToPerson(pianist.neck, hats[0]);
 			AddObjectToPerson(drumer.neck, hats[1]);
 			AddObjectToPerson(maleDancer.neck, hats[2]);
-
-			//започваме да сменяваме ставите на някои от човечетата с музикални символи
-			//десен лакът на танцьорката с ключа сол
+			
+			//changing the joints of some of the figures with music symbols
+			//right elbow of female dancer to treble clef
 			var trebleCleff = CreateAnSVGExtrudeMesh('svg/treble-cleff.svg', new THREE.MeshPhongMaterial({ color: 0xffd500 }), 5);
 			trebleCleff.translateY(4);
 			trebleCleff.scale.set(0.15, 0.15, 0.15);
 			AddObjectToPerson(femaleDancer.r_elbow, trebleCleff);
 			Hide(femaleDancer.r_elbow);
 
-			//десен лакът на пианистка с половина нота
+			//right elbow of pianist to half note
 			var halfNote = CreateAnSVGExtrudeMesh('svg/half-note.svg', new THREE.MeshPhongMaterial({ color: 'purple' }), 5);
 			halfNote.translateY(4);
 			halfNote.scale.set(0.15, 0.15, 0.15);
 			AddObjectToPerson(pianist.r_elbow, halfNote);
 			Hide(pianist.r_elbow);
 
-			//лява ръка на пианистка с шестнайсетина нота
+			//left arm of pianist to sixteenth note
 			var sixteenthNote = CreateAnSVGExtrudeMesh('svg/sixteenth-note.svg', new THREE.MeshPhongMaterial({ color: 'purple' }), 5);
 			sixteenthNote.translateY(4);
 			sixteenthNote.scale.set(0.2, 0.2, 0.2);
 			AddObjectToPerson(pianist.l_arm, sixteenthNote);
 			Hide(pianist.l_arm);
 
-			//тяло на барабаниста с диез
+			//body of drumer to sharp
 			var sharpSymbol = CreateAnSVGExtrudeMesh('svg/sharp-symbol.svg', new THREE.MeshPhongMaterial({ color: 0xfffedf }), 6);
 			sharpSymbol.translateY(6);
 			sharpSymbol.rotation.y = pi / 2;
@@ -595,7 +737,7 @@
 			AddObjectToPerson(drumer.body, sharpSymbol);
 			Hide(drumer.body);
 
-			//десен крак на танцьора с бас ключ
+			//right leg of the male dancer to bass clef
 			var bassCleff = CreateAnSVGExtrudeMesh('svg/bass-cleff.svg', new THREE.MeshPhongMaterial({ color: 0xfffedf }), 5);
 			bassCleff.translateY(5.5);
 			bassCleff.rotation.y = pi / 4;
@@ -603,7 +745,7 @@
 			AddObjectToPerson(maleDancer.r_leg, bassCleff);
 			Hide(maleDancer.r_leg);
 
-			//дясно коляно на китарист с бемол
+			//right knee of guitarist to flat
 			var flatSymbol = CreateAnSVGExtrudeMesh('svg/flat-symbol.svg', new THREE.MeshPhongMaterial({ color: 0xfffedf }), 5);
 			flatSymbol.translateY(5);
 			flatSymbol.rotation.y = pi / 4;
@@ -620,19 +762,21 @@
 			secondaryStageTwoGroup.add(secondaryStageTwo, drums, drumer, stoolForDrums);
 			secondaryStageThreeGroup.add(secondaryStageThree, guitarist);
 
-			//променливи, които се променят в зависимост дали някоя от сцените е "кликната"
+
+			//variables, which indicate which of the stages is clicked
 			var secondaryStageOneClicked = false;
 			var secondaryStageTwoClicked = false;
 			var secondaryStageThreeClicked = false;
-			//функция, която проверява дали и трите малки сцени са кликнати едновременно
+
+			//funkction, which checks if all if the stages are clicked
 			function AllScenesClicked() {
 				return (secondaryStageOneClicked && secondaryStageTwoClicked && secondaryStageThreeClicked);
 			}
-			//сега ще използваме библиотеката threex.domevents.js, която позволява да
-			//се правят неща след кликване върху даден обект
+
+			//using threex.domevents.js, which allows us to make stuff after clicking on an object
 			var domEvents = new THREEx.DomEvents(camera, renderer.domElement)
 			domEvents.addEventListener(secondaryStageOneGroup, 'click', function (event) {
-				//тук описваме какво ще се случи
+				//what happens after clicking
 				if (secondaryStageOneClicked == false) {
 					secondaryStageOneClicked = true;
 					pianistSpotLight.visible = true;
@@ -651,7 +795,7 @@
 			);
 
 			domEvents.addEventListener(secondaryStageTwoGroup, 'click', function (event) {
-				//тук описваме какво ще се случи
+				//what happens after clicking
 				if (secondaryStageTwoClicked == false) {
 					secondaryStageTwoClicked = true;
 					drumerSpotLight.visible = true;
@@ -695,8 +839,7 @@
 				if (secondaryStageTwoClicked == true) AnimateDrumer();
 				if (secondaryStageThreeClicked == true) AnimateGuitarist();
 				if (AllScenesClicked() == true) {
-					//при "кликнати" трите по-малки сцени включва анимацията на танцьорите
-					//започва и да се намалява и увеличава последователно общата светлина
+					//when all 3 of the little stages are clicked, the dancers beginn dancing and the light starts to fade in and out
 					lightIntensityVariable++;
 					light.intensity = cos(4 * lightIntensityVariable) + 2;
 					AnimateDanceMoves(maleDancer, true);
@@ -715,7 +858,7 @@
 			var pianistAnimationVariable = 0;
 			var drumerAnimationVariable = 0;
 			var guitaristAnimationVariable = 0;
-			var t = 0; //тази променлива ще ползваме за танцьорите тъй като е по-кратко името й, а ще я ползваме често
+			var t = 0; //we will use this variable for the timing of the dance moovements
 
 			function AnimatePointLights() {
 				pointLightsVariable++;
@@ -752,7 +895,7 @@
 				guitarist.head.turn(0, 0, 30 * sin(5 * guitaristAnimationVariable));
 			}
 
-			//левитация на малките сцени
+			//the little stages levitate
 			function AnimateStages() {
 				if (secondaryStageOneClicked == true) {
 					secondaryStageOneGroup.position.set(0, 5 * sin(stagesAnimationVariable[0]), 0);
@@ -768,8 +911,8 @@
 				}
 			}
 
-			var chooseMovement = false; //ще я използваме при маршируването, за да редуваме краката
-			function AnimateDanceMoves(model, male) //тъй като движенията на момчето и момичето леко се различават е втората променлива
+			var chooseMovement = false; //using this variable to switch the legs by dance movements
+			function AnimateDanceMoves(model, male) //we have two arguments, because there is a slight difference between the male and the female movements
 			{
 				t++;
 				if (male == true) model.position.set(55 * cos(t / 5.5), 32, -55 * sin(t / 5.5));
@@ -803,7 +946,7 @@
 				model.pelvis.position.set(0.5 * sin(4 * t), 0, 0.5 * cos(4 * t));
 				model.body.turn(15 * cos(4 * t), 0, 5 * cos(4 * t) - 5);
 				model.neck.turn(20 * sin(4 * t), 0, 0);
-				if (t >= 0 && t < 360) //първо движение
+				if (t >= 0 && t < 360) //first dance move
 				{
 					model.l_arm.turn(20, 0, -70);
 					model.r_arm.turn(-20, 0, -70);
@@ -811,7 +954,7 @@
 					model.l_elbow.turn(20 * cos(4 * t) - 100, 0, 20 * sin(4 * t) - 20);
 					model.r_elbow.turn(20 * sin(4 * t) + 100, 0, 20 * cos(4 * t) - 20);
 				}
-				if (t >= 360 && t < 405) //преход
+				if (t >= 360 && t < 405) //transition
 				{
 					model.l_arm.turn(20, 0, -35 * cos(4 * t) - 35);
 					model.r_arm.turn(65 * cos(4 * t) - 85, 0, -35 * cos(4 * t) - 35);
@@ -819,7 +962,7 @@
 					model.l_elbow.turn(-40 * cos(4 * t) - 40, 0, -10 * cos(4 * t) - 10);
 					model.r_elbow.turn(80 * cos(4 * t) + 20, 0, 0);
 				}
-				if (t >= 405 && t < 765) //следващо движение
+				if (t >= 405 && t < 765) //next dance move
 				{
 					model.l_arm.turn(65 * cos(4 * t) + 85, 0, 0);
 					model.r_arm.turn(65 * cos(4 * t) - 85, 0, 0);
@@ -827,7 +970,7 @@
 					model.l_elbow.turn(0, -45 * cos(4 * t) - 45, -30 * cos(4 * t) - 30);
 					model.r_elbow.turn(30 * cos(4 * t) - 30, 45 * cos(4 * t) - 45, 0);
 				}
-				if (t >= 765 && t < 810) //преход
+				if (t >= 765 && t < 810) //transition
 				{
 					model.l_arm.turn(10 * cos(4 * t) + 30, 0, 0);
 					model.r_arm.turn(55 * cos(4 * t) - 95, 0, 0);
@@ -848,7 +991,7 @@
 					}
 					if (male == false) {
 						if (chooseMovement == true) {
-							model.body.turn(15 * cos(4 * t), 45 * cos(4 * t) - 45, 10 * cos(4 * t) - 10);//на женската фигура се вдига роклята и правим наклона по-малък
+							model.body.turn(15 * cos(4 * t), 45 * cos(4 * t) - 45, 10 * cos(4 * t) - 10);//the female dancer has a smaller tilt because of the dress
 						}
 						else {
 							model.body.turn(15 * cos(4 * t), -45 * cos(4 * t) + 45, 10 * cos(4 * t) - 10);
@@ -857,7 +1000,7 @@
 
 
 				}
-				if (t >= 1530 && t < 1575) //преход
+				if (t >= 1530 && t < 1575) //transition
 				{
 					model.l_arm.turn(20 * cos(4 * t) + 20, 0, 0);
 					model.r_arm.turn(-20 * cos(4 * t) - 20, 0, 0);
@@ -865,7 +1008,7 @@
 					model.l_elbow.turn(-45 * cos(4 * t) - 45, 0, 0);
 					model.r_elbow.turn(45 * cos(4 * t) + 45, 0, 0);
 				}
-				if (t >= 1575 && t < 1935) //пляскане (следващо движение)
+				if (t >= 1575 && t < 1935) //next dance move (clap)
 				{
 					model.l_arm.turn(80 * cos(4 * t) + 80, 0, 0);
 					model.r_arm.turn(-80 * cos(4 * t) - 80, 0, 0);
@@ -876,7 +1019,7 @@
 					model.l_wrist.turn(0, 45 * cos(4 * t) + 45, 0);
 					model.r_wrist.turn(0, -45 * cos(4 * t) - 45, 0);
 				}
-				if (t >= 1935 && t < 1980) //преход към началното движение
+				if (t >= 1935 && t < 1980) //transition to the first dance move
 				{
 					model.l_arm.turn(10 * cos(4 * t) + 10, 0, -35 * cos(4 * t) - 35);
 					model.r_arm.turn(-10 * cos(4 * t) - 10, 0, -35 * cos(4 * t) - 35);
@@ -888,12 +1031,12 @@
 					model.r_wrist.turn(0, -45 * cos(4 * t) - 45, 0);
 
 				}
-				if (t == 1980) t = 0; //завъртаме отначало
+				if (t == 1980) t = 0; //looping the dance movements from beginning
 
 			}
 
 			function AnimateStars() {
-				stars.rotation.y += 0.0005;
+				stars.rotation.y += 0.0005; //moving background
 			}
 
 		}
